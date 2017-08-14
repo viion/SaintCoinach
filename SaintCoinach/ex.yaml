@@ -1446,11 +1446,6 @@ SheetDefinitions:
         TargetSheet: TextCommand
     Index: 18
   - InnerDefinition: !!single_def
-      Name: TextCommand
-      Converter: !!link_conv
-        TargetSheet: TextCommand
-    Index: 16
-  - InnerDefinition: !!single_def
       Name: Icon
       Converter: !!icon_conv {}
     Index: 19
