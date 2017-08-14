@@ -44,6 +44,16 @@ namespace SaintCoinach.Cmd.Commands
                     OutputError("Invalid map format " + paramList);
                 }
 
+            if (!string.IsNullOrEmpty(paramList)) {
+                var parameters = paramList.Split(' ');
+                if (parameters.Contains("jpg"))
+                    format = ImageFormat.Jpeg;
+                else if (parameters.Contains("png"))
+                    format = ImageFormat.Png;
+                else
+                    OutputError("Invalid map format " + paramList);
+            }
+
             var c = 0;
             var allMaps = _Realm.GameData.GetSheet<SaintCoinach.Xiv.Map>();
 

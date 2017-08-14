@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Godbert.ViewModels;
 
 namespace Godbert.Views {
     /// <summary>
@@ -32,6 +33,43 @@ namespace Godbert.Views {
             // loaded/unloaded.
             if (row.MinHeight < e.NewSize.Height)
                 row.MinHeight = e.NewSize.Height;
+        }
+
+        private void _BookmarksList_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            var bookmark = e.AddedItems.OfType<BookmarkViewModel>().FirstOrDefault();
+            if (bookmark == null)
+                return;
+
+            var mainWindow = WpfHelper.FindParent<MainWindow>(this);
+            if (mainWindow == null)
+                return;
+
+            var mainViewModel = mainWindow.DataContext as MainViewModel;
+            if (mainViewModel == null)
+                return;
+
+            mainViewModel.Data.SelectedSheetName = bookmark.SheetName;
+            var row = mainViewModel.Data.SelectedSheet[bookmark.Key];
+            _DataGrid.SelectRow(row, bookmark.ColumnIndex);
+
+            // Remove selection.
+            _BookmarksList.SelectedIndex = -1;
+        }
+
+        private void BookmarkListItem_MouseDown(object sender, MouseButtonEventArgs e) {
+            if (e.MiddleButton == MouseButtonState.Pressed) {
+                var source = e.OriginalSource as FrameworkElement;
+                if (source == null)
+                    return;
+
+                var listItem = WpfHelper.FindParent<ListBoxItem>(source);
+                var bookmark = listItem?.DataContext as BookmarkViewModel;
+                if (bookmark == null)
+                    return;
+
+                var dataViewModel = (DataViewModel)DataContext;
+                dataViewModel.Bookmarks.Remove(bookmark);
+            }
         }
     }
 }

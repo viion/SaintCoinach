@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
 
 using SaintCoinach.Ex.Relational;
 
@@ -19,6 +21,7 @@ namespace Godbert.ViewModels {
         private string _FilterSheetTerm;
         private IEnumerable<string> _FilteredSheets;
         private string _FilterDataTerm;
+        private ObservableCollection<BookmarkViewModel> _Bookmarks = new ObservableCollection<BookmarkViewModel>();
         #endregion
 
         #region Properties
@@ -45,11 +48,9 @@ namespace Godbert.ViewModels {
                 return _SelectedSheet;
             }
         }
-        public string FilterSheetTerm
-        {
+        public string FilterSheetTerm {
             get { return _FilterSheetTerm; }
-            set
-            {
+            set {
                 _FilterSheetTerm = value;
 
                 if (string.IsNullOrWhiteSpace(value))
@@ -62,15 +63,21 @@ namespace Godbert.ViewModels {
             }
         }
 
-        public string FilterDataTerm
-        {
+        public string FilterDataTerm {
             get { return _FilterDataTerm; }
-            set
-            {
+            set {
                 _FilterDataTerm = value;
 
                 OnPropertyChanged(() => FilterDataTerm);
             }
+        }
+
+        public ObservableCollection<BookmarkViewModel> Bookmarks {
+            get { return _Bookmarks; }
+        }
+
+        public Visibility BookmarksVisibility {
+            get { return _Bookmarks.Count > 0 ? Visibility.Visible : Visibility.Collapsed; }
         }
         #endregion
 
@@ -79,6 +86,7 @@ namespace Godbert.ViewModels {
             this.Realm = realm;
 
             _FilteredSheets = Realm.GameData.AvailableSheets;
+            _Bookmarks.CollectionChanged += _Bookmarks_CollectionChanged;
         }
         #endregion
 
@@ -170,5 +178,9 @@ namespace Godbert.ViewModels {
                 || self is Double);
         }
         #endregion
+
+        private void _Bookmarks_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+            OnPropertyChanged(() => BookmarksVisibility);
+        }
     }
 }

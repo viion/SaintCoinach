@@ -10,7 +10,8 @@ namespace SaintCoinach.Xiv {
     public class JournalCategory : XivRow {
         #region Properties
 
-        public Text.XivString Name { get { return AsString("Name"); } }
+        public Text.XivString Name => AsString("Name");
+        public JournalSection JournalSection => As<JournalSection>();
 
         #endregion
 

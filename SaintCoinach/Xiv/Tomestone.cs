@@ -11,8 +11,6 @@ namespace SaintCoinach.Xiv {
     public class Tomestone : XivRow {
         #region Properties
 
-        public Item Item { get { return As<Item>(); } }
-
         public int WeeklyLimit { get { return AsInt32("WeeklyLimit"); } }
 
         #endregion

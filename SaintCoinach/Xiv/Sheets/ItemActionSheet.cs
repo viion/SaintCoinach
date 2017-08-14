@@ -44,6 +44,8 @@ namespace SaintCoinach.Xiv.Sheets {
             }, {
                 853, typeof(IA.CompanionUnlock)
             }, {
+                944, typeof(IA.MgpCard)
+            }, {
                 1013, typeof(IA.BuddyEquipUnlock)
             }, {
                 1053, typeof(IA.Raise)
@@ -86,9 +88,17 @@ namespace SaintCoinach.Xiv.Sheets {
             }, {
                 4107, typeof(IA.FolkloreBook)
             }, {
+                4647, typeof(IA.EquipmentCoffer)
+            }, {
                 5136, typeof(IA.Heavenscracker)
             }, {
+                5564, typeof(IA.AdventureBook)
+            }, {
                 5845, typeof(IA.OrchestrionRollUnlock)
+            }, {
+                8667, typeof(IA.SustainPotion)
+            }, {
+                9343, typeof(IA.FateContentAction)
             }
         };
 
@@ -105,8 +115,7 @@ namespace SaintCoinach.Xiv.Sheets {
         protected override ItemAction CreateRow(IRelationalRow sourceRow) {
             var typeKey = Convert.ToInt32(sourceRow["Type"]);
 
-            Type type;
-            if (!ItemActionTypes.TryGetValue(typeKey, out type)) {
+            if (!ItemActionTypes.TryGetValue(typeKey, out var type)) {
                 type = DefaultItemActionType;
                 Trace.WriteLine(string.Format("Unhandled item action type '{0}'.", typeKey));
             }

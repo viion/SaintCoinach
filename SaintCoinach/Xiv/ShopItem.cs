@@ -116,7 +116,7 @@ namespace SaintCoinach.Xiv {
         ///     Gets the item of the current listing entry.
         /// </summary>
         /// <value>The item of the current listing entry.</value>
-        ItemBase IShopListingItem.Item { get { return Item; } }
+        Item IShopListingItem.Item { get { return Item; } }
 
         /// <summary>
         ///     Gets the count for the current listing entry.
