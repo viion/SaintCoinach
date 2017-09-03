@@ -1,4 +1,5 @@
-﻿using SaintCoinach.Xiv;
+﻿using Newtonsoft.Json.Linq;
+using SaintCoinach.Xiv;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,5 +44,19 @@ namespace SaintCoinach.Ex.Relational.ValueConverters {
 
             return index;
         }
+
+        #region Serialization
+
+        public JObject ToJson() {
+            return new JObject() {
+                ["type"] = "tomestone"
+            };
+        }
+
+        public static TomestoneOrItemReferenceConverter FromJson(JToken obj) {
+            return new TomestoneOrItemReferenceConverter();
+        }
+
+        #endregion
     }
 }

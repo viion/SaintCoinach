@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -111,6 +112,23 @@ namespace SaintCoinach.Ex.Relational.Definition {
                 pos = newPos;
             }
             return value;
+        }
+
+        #endregion
+
+        #region Serialization
+
+        public JObject ToJson() {
+            return new JObject() {
+                ["type"] = "group",
+                ["members"] = new JArray(_Members.Select(m => m.ToJson())),
+            };
+        }
+
+        public static GroupDataDefinition FromJson(JToken obj) {
+            return new GroupDataDefinition() {
+                Members = obj["members"].Select(m => DataDefinitionSerializer.FromJson(m)).ToList()
+            };
         }
 
         #endregion

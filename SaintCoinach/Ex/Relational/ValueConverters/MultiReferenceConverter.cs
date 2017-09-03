@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,6 +35,23 @@ namespace SaintCoinach.Ex.Relational.ValueConverters {
                     return sheet[key];
             }
             return null;
+        }
+
+        #endregion
+
+        #region Serialization
+
+        public JObject ToJson() {
+            return new JObject() {
+                ["type"] = "multiref",
+                ["targets"] = new JArray(Targets)
+            };
+        }
+
+        public static MultiReferenceConverter FromJson(JToken obj) {
+            return new MultiReferenceConverter() {
+                Targets = obj["targets"].Select(t => (string)t).ToArray()
+            };
         }
 
         #endregion

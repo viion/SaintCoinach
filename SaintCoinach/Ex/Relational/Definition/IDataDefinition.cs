@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 
 namespace SaintCoinach.Ex.Relational.Definition {
     public interface IDataDefinition {
@@ -23,5 +24,21 @@ namespace SaintCoinach.Ex.Relational.Definition {
         Type GetValueType(int index);
 
         IDataDefinition Clone();
+
+        JObject ToJson();
+    }
+
+    public static class DataDefinitionSerializer {
+        public static IDataDefinition FromJson(JToken obj) {
+            var type = (string)obj["type"];
+            if (type == null)
+                return SingleDataDefinition.FromJson(obj);
+            else if (type == "group")
+                return GroupDataDefinition.FromJson(obj);
+            else if (type == "repeat")
+                return RepeatDataDefinition.FromJson(obj);
+            else
+                throw new ArgumentException("Invalid definition type.", "obj");
+        }
     }
 }
