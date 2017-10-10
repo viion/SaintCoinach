@@ -46,9 +46,8 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\packages\DotNetZip.1.9.3\lib\net20\Ionic.Zip.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -80,8 +79,10 @@
     <Compile Include="Ex\DataSheet.Enumerator.cs" />
     <Compile Include="Ex\MultiSheet.Enumerator.cs" />
     <Compile Include="Ex\PartialDataSheet.Enumerator.cs" />
+    <Compile Include="Ex\Relational\RelationalDataIndex.cs" />
     <Compile Include="Ex\Relational\Update\ColumnComparer.cs" />
     <Compile Include="Ex\Relational\ValueConverters\TomestoneOrItemReferenceConverter.cs" />
+    <Compile Include="Ex\Relational\ValueConverters\ComplexLinkConverter.cs" />
     <Compile Include="Ex\Variant1\DataRow.cs" />
     <Compile Include="Ex\Variant1\RelationalDataRow.cs" />
     <Compile Include="Ex\Variant2\DataRow.cs" />
@@ -784,8 +785,6 @@
     <Compile Include="Xiv\RetainerTaskRandom.cs" />
     <Compile Include="Xiv\Sheets\InventoryItemSheet.cs" />
     <Compile Include="Xiv\Sheets\ItemActionSheet.cs" />
-    <Compile Include="Xiv\Shop.cs" />
-    <Compile Include="Xiv\ShopItem.cs" />
     <Compile Include="Xiv\ShopListingItem.cs" />
     <Compile Include="Xiv\SpecialShop.cs" />
     <Compile Include="Xiv\SpecialShopListing.cs" />
