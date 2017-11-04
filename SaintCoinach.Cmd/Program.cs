@@ -23,21 +23,28 @@ namespace SaintCoinach.Cmd {
     class Program {
         private static void Main(string[] args) {
             var dataPath = Properties.Settings.Default.DataPath;
+            var customPath = Properties.Settings.Default.CustomPath;
 
             if (args.Length > 0) {
                 dataPath = args[0];
                 args = args.Skip(1).ToArray();
             }
-            if (string.IsNullOrWhiteSpace(dataPath))
-                dataPath = SearchForDataPaths().FirstOrDefault(p => System.IO.Directory.Exists(p));
-            if (string.IsNullOrWhiteSpace(dataPath) || !System.IO.Directory.Exists(dataPath)) {
-                Console.WriteLine("Need data!");
-                return;
+
+            if (string.IsNullOrWhiteSpace(customPath)) {
+                if (string.IsNullOrWhiteSpace(dataPath))
+                    dataPath = SearchForDataPaths().FirstOrDefault(p => System.IO.Directory.Exists(p));
+                if (string.IsNullOrWhiteSpace(dataPath) || !System.IO.Directory.Exists(dataPath)) {
+                    Console.WriteLine("Need data!");
+                    return;
+                }
+            } else {
+                dataPath = customPath;
             }
 
             var realm = new ARealmReversed(dataPath, @"SaintCoinach.History.zip", Ex.Language.English, @"app_data.sqlite");
             realm.Packs.GetPack(new IO.PackIdentifier("exd", IO.PackIdentifier.DefaultExpansion, 0)).KeepInMemory = true;
 
+            Console.WriteLine("Game folder: {0}", dataPath);
             Console.WriteLine("Game version: {0}", realm.GameVersion);
             Console.WriteLine("Definition version: {0}", realm.DefinitionVersion);
             
