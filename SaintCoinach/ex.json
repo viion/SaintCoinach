@@ -1,5 +1,5 @@
 {
-  "version": "2017.10.19.0000.0000",
+  "version": "2017.11.15.0000.0000",
   "sheets": [
     {
       "sheet": "Achievement",
@@ -6271,6 +6271,26 @@
                 "name": "Stars"
               }
             ]
+          }
+        }
+      ]
+    },
+    {
+      "sheet": "MasterpieceSupplyMultiplier",
+      "definitions": [
+        {
+          "type": "repeat",
+          "count": 2,
+          "definition": {
+            "name": "XpMultiplier"
+          }
+        },
+        {
+          "index": 4,
+          "type": "repeat",
+          "count": 2,
+          "definition": {
+            "name": "CurrencyMultiplier"
           }
         }
       ]
