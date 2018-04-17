@@ -49,6 +49,7 @@ namespace SaintCoinach.Ex {
         public int ColumnCount {  get { return _Columns.Length; } }
         public IEnumerable<Range> DataFileRanges { get { return _DataFileRanges; } }
         public IEnumerable<Language> AvailableLanguages { get { return _AvailableLanguages; } }
+        public int AvailableLanguagesCount { get { return _AvailableLanguages.Count(x => x != Language.None); } }
         public int FixedSizeDataLength { get; private set; }
 
         #endregion
@@ -140,6 +141,11 @@ namespace SaintCoinach.Ex {
         private void ReadSuffixes(byte[] buffer, ref int position) {
             const int CountOffset = 0x0C;
             const int Length = 0x02;
+
+            // ScreenImage and CutScreenImage reference localized image files,
+            // however their available languages are only None.  Perhaps there
+            // is a flag to use a global list of available languages in this
+            // buffer?
 
             var count = OrderedBitConverter.ToUInt16(buffer, CountOffset, true);
             var langs = new List<Language>();
