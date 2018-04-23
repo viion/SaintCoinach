@@ -1024,6 +1024,18 @@
       ]
     },
     {
+      "sheet": "BacklightColor",
+      "defaultColumn": "Color",
+      "definitions": [
+        {
+          "name": "Color",
+          "converter": {
+            "type": "color"
+          }
+        }
+      ]
+    },
+    {
       "sheet": "Balloon",
       "defaultColumn": "Dialogue",
       "definitions": [
@@ -1840,7 +1852,7 @@
         },
         {
           "index": 3,
-          "name": "ChocoboRaceAbilityType",
+          "name": "IsActive",
           "converter": {
             "type": "link",
             "target": "ChocoboRaceAbilityType"
@@ -2854,23 +2866,6 @@
       ]
     },
     {
-      "sheet": "ContentTalk",
-      "defaultColumn": "Text",
-      "definitions": [
-        {
-          "name": "ContentTalkParam",
-          "converter": {
-            "type": "link",
-            "target": "ContentTalkParam"
-          }
-        },
-        {
-          "index": 1,
-          "name": "Text"
-        }
-      ]
-    },
-    {
       "sheet": "ContentsNoteCategory",
       "defaultColumn": "Type",
       "definitions": [
@@ -2881,6 +2876,23 @@
             "type": "link",
             "target": "ContentType"
           }
+        }
+      ]
+    },
+    {
+      "sheet": "ContentTalk",
+      "defaultColumn": "TextString", 
+      "definitions": [ 
+        {
+          "name": "ContentTalkParam",
+          "converter": {
+            "type": "link",
+            "target": "ContentTalkParam"
+          }
+        },
+        {
+          "index": 1,
+          "name": "TextString"
         }
       ]
     },
@@ -3106,6 +3118,100 @@
       "definitions": [
         {
           "index": 2,
+          "name": "Name"
+        }
+      ]
+    },
+    {
+      "sheet": "Credit",
+      "definitions": [
+        {
+          "index": 1,
+          "name": "Roles(1)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 2,
+          "name": "JapaneseCast(1)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 3,
+          "name": "EnglishCast(1)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 4,
+          "name": "FrenchCast(1)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 5,
+          "name": "GermanCast(1)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 6,
+          "name": "Roles(2)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 7,
+          "name": "JapaneseCast(2)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 8,
+          "name": "EnglishCast(2)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 9,
+          "name": "FrenchCast(2)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        },
+        {
+          "index": 10,
+          "name": "GermanCast(2)",
+          "converter": {
+            "type": "link",
+            "target": "CreditCast"
+          }
+        }
+      ]
+    },
+    {
+      "sheet": "CreditCast",
+      "defaultColumn": "Name",
+      "definitions": [
+        {
           "name": "Name"
         }
       ]
@@ -3387,6 +3493,7 @@
     },
     {
       "sheet": "DefaultTalk",
+      "defaultColumn": "Text[0]",
       "isGenericReferenceTarget": true,
       "definitions": [
         {
@@ -3547,12 +3654,36 @@
           "name": "Name"
         },
         {
+          "index": 1,
+          "type": "repeat",
+          "count": 7,
+          "definition": {
+            "name": "ActionTimeline",
+            "converter": {
+             "type": "link",
+              "target": "ActionTimeline"
+            }
+          }
+        },
+        {
           "index": 11,
           "name": "EmoteCategory",
           "converter": {
             "type": "link",
             "target": "EmoteCategory"
           }
+        },
+        {
+          "index": 12,
+          "name": "EmoteMode",
+          "converter": {
+            "type": "link",
+            "target": "EmoteMode"
+          }
+        },
+        {
+          "index": 17,
+          "name": "Position"
         },
         {
           "index": 18,
@@ -3584,6 +3715,10 @@
             "type": "link",
             "target": "LogMessage"
           }
+        },
+        {
+          "index": 22,
+          "name": "ReceivedFrom"
         }
       ]
     },
@@ -5370,6 +5505,41 @@
       "definitions": [
         {
           "name": "Name"
+        },
+        {
+          "index": 1,
+          "name": "Icon",
+          "converter": {
+            "type": "icon"
+          }
+        },
+        {
+          "index": 2,
+          "type": "repeat",
+          "count": 4,
+          "definition": {
+            "name": "Quest{Required}",
+          "converter": {
+            "type": "link",
+            "target": "Quest"
+           }
+          }
+        },
+        {
+          "index": 6,
+          "name": "AcceptTalk",
+          "converter": {
+            "type": "link",
+            "target": "DefaultTalk"
+          }
+        },
+        {
+          "index": 7,
+          "name": "FailTalk",
+          "converter": {
+            "type": "link",
+            "target": "DefaultTalk"
+          }
         }
       ]
     },
@@ -5554,6 +5724,83 @@
       ]
     },
     {
+      "sheet": "HousingAethernet",
+      "definitions": [
+        {
+          "name": "DiscoveryIndex"
+        },
+        {
+          "index": 1,
+          "name": "TerritoryType",
+          "converter": {
+            "type": "link",
+            "target": "TerritoryType"
+          }
+        },
+        {
+          "index": 2,
+          "name": "PlaceName",
+          "converter": {
+            "type": "link",
+            "target": "PlaceName"
+          }
+        },
+        {
+          "index": 3,
+          "name": "Order"
+        }
+      ]
+    },
+    {
+      "sheet": "HousingEmploymentNpcList",
+      "definitions": [
+        {
+          "name": "Race",
+          "converter": {
+            "type": "link",
+            "target": "HousingEmploymentNpcRace"
+          }
+        },
+        {
+          "index": 1,
+          "type": "repeat",
+          "count": 2,
+          "definition": {
+            "name": "ENpcBase",
+            "converter": {
+              "type": "link",
+              "target": "ENpcBase"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "sheet": "HousingEmploymentNpcRace",
+      "defaultColumn": "Race",
+      "definitions": [
+        {
+          "name": "Race"
+        }
+      ]
+    },
+    {
+      "sheet": "HousingEmploymentNpcType",
+      "definitions": [
+        {
+          "type": "repeat",
+          "count": 12,
+          "definition": {
+            "name": "ENpcBase",
+            "converter": {
+              "type": "link",
+              "target": "ENpcBase"
+            }
+          }
+        }
+      ]
+    },
+    {
       "sheet": "HousingFurniture",
       "defaultColumn": "Item",
       "definitions": [
@@ -5562,11 +5809,7 @@
         },
         {
           "index": 1,
-          "name": "HousingItemCategory",
-          "converter": {
-            "type": "link",
-            "target": "HousingItemCategory"
-          }
+          "name": "HousingItemCategory"
         },
         {
           "index": 2,
@@ -5578,15 +5821,15 @@
         },
         {
           "index": 4,
-          "name": "HousingLayoutLimit",
-          "converter": {
-            "type": "link",
-            "target": "HousingLayoutLimit"
-          }
+          "name": "HousingLayoutLimit"
         },
         {
           "index": 5,
-          "name": "Event"
+          "name": "CustomTalk",
+          "converter": {
+            "type": "link",
+            "target": "CustomTalk"
+          }
         },
         {
           "index": 6,
@@ -5599,6 +5842,23 @@
         {
           "index": 7,
           "name": "DestroyOnRemoval"
+        },
+        {
+          "index": 9,
+          "name": "Tooltip",
+          "converter": {
+            "type": "link",
+            "target": "HousingPlacement"
+          }
+        },
+      ]
+    },
+    {
+      "sheet": "HousingPlacement",
+      "defaultColumn": "Text",
+      "definitions": [
+        {
+          "name": "Text"
         }
       ]
     },
@@ -5611,11 +5871,7 @@
         },
         {
           "index": 1,
-          "name": "HousingItemCategory",
-          "converter": {
-            "type": "link",
-            "target": "HousingItemCategory"
-          }
+          "name": "HousingItemCategory"
         },
         {
           "index": 2,
@@ -5627,15 +5883,15 @@
         },
         {
           "index": 4,
-          "name": "HousingLayoutLimit",
-          "converter": {
-            "type": "link",
-            "target": "HousingLayoutLimit"
-          }
+          "name": "HousingLayoutLimit"
         },
         {
           "index": 5,
-          "name": "Event"
+          "name": "CustomTalk",
+          "converter": {
+            "type": "link",
+            "target": "CustomTalk"
+          }
         },
         {
           "index": 6,
@@ -6713,6 +6969,31 @@
       ]
     },
     {
+      "sheet": "LotteryExchangeShop",
+      "definitions": [
+        {
+          "index": 1,
+          "type": "repeat",
+          "count": 16,
+          "definition": {
+            "name": "ItemAccepted",
+            "converter": {
+              "type": "link",
+              "target": "Item"
+            }
+          }
+        },
+        {
+          "index": 17,
+          "type": "repeat",
+          "count": 16,
+          "definition": {
+            "name": "AmountAccepted"
+          }
+        }
+      ]
+    },
+    {
       "sheet": "MacroIcon",
       "defaultColumn": "Icon",
       "definitions": [
@@ -6912,6 +7193,7 @@
     },
     {
       "sheet": "MapSymbol",
+      "defaultColumn": "PlaceName",  
       "definitions": [
         {
           "name": "Icon",
@@ -9485,7 +9767,10 @@
       "sheet": "ScreenImage",
       "definitions": [
         {
-          "name": "Image"
+          "name": "Image",
+          "converter": {
+            "type": "icon"
+          }
         }
       ]
     },
@@ -9979,10 +10264,10 @@
     },
     {
       "sheet": "StatusLoopVFX",
-      "defaultColumn": "Location",
+      "defaultColumn": "VFX",
       "definitions": [
         {
-          "name": "Location",
+          "name": "VFX",
           "converter": {
             "type": "link",
             "target": "VFX"
@@ -10113,7 +10398,7 @@
     },
     {
       "sheet": "TerritoryType",
-      "defaultColumn": "Name",
+      "defaultColumn": "PlaceName",
       "definitions": [
         {
           "name": "Name"
@@ -10340,6 +10625,14 @@
           "name": "Level"
         },
         {
+          "index": 4,
+          "name": "FromQuest",
+          "converter": {
+            "type": "link",
+            "target": "Quest"
+          }
+        },
+        {
           "index": 5,
           "name": "Value"
         },
@@ -10502,8 +10795,21 @@
         },
         {
           "index": 6,
-          "name": "MinPartySize"
+          "name": "TreasureHuntTexture",
+          "converter": {
+            "type": "link",
+            "target": "TreasureHuntTexture"
+          }
         }
+      ]
+    },
+    {
+      "sheet": "TreasureHuntTexture",
+      "defaultColumn": "Type",
+      "definitions": [
+        {
+          "name": "Type"
+        },
       ]
     },
     {
@@ -10875,11 +11181,7 @@
       "isGenericReferenceTarget": true,
       "definitions": [
         {
-          "name": "Level",
-          "converter": {
-            "type": "link",
-            "target": "Level"
-          }
+          "name": "DiscoveryIndex"
         },
         {
           "index": 1,
@@ -10957,6 +11259,43 @@
             "type": "link",
             "target": "Quest"
           }
+        }
+      ]
+    },
+    {
+      "sheet": "WarpLogic",
+      "definitions": [
+        {
+          "index": 2,
+          "name": "WarpName"
+        },
+        {
+          "index": 3,
+          "type": "repeat",
+          "count": 10,
+          "definition": {
+            "name": "Function"
+          }
+        },
+        {
+          "index": 13,
+          "type": "repeat",
+          "count": 10,
+          "definition": {
+            "name": "Argument"
+          }
+        },
+        {
+          "index": 23,
+          "name": "TextString"
+        },
+        {
+          "index": 24,
+          "name": "Response(1)"
+        },
+        {
+          "index": 25,
+          "name": "Response(2)"
         }
       ]
     },
@@ -11128,6 +11467,22 @@
       "definitions": [
         {
           "name": "Description"
+        }
+      ]
+    },
+    {
+      "sheet": "WeeklyLotBonus",
+      "definitions": [
+        {
+          "type": "repeat",
+          "count": 31,
+          "definition": {
+            "name": "WeeklyLotBonusThreshold",
+            "converter": {
+              "type": "link",
+              "target": "WeeklyLotBonusThreshold"
+            }
+          }
         }
       ]
     },
