@@ -8212,6 +8212,22 @@
       ]
     },
     {
+      "sheet": "MountTransient",
+      "definitions": [
+        {
+          "name": "Description"
+        },
+        {
+          "index": 1,
+          "name": "Description{Enhanced}"
+        },
+        {
+          "index": 2,
+          "name": "Tooltip"
+        },
+      ]
+    },
+    {
       "sheet": "MoveVfx",
       "defaultColumn": "VFXNormal",
       "definitions": [
