@@ -14494,11 +14494,11 @@
       "sheet": "UIColor",
       "definitions": [
         {
-          "name": "Foreground",
+          "name": "UIForeground"
         },
         {
           "index": 1,
-          "name": "Background"
+          "name": "UIGlow"
         }
       ]
     },
